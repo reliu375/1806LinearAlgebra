@@ -1,0 +1,167 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{18.06 Final Exam}
+\author{Renbin Liu }
+\date{June 2018}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+\begin{document}
+
+\maketitle
+
+\section{ (SVD, Positive Definiteness), 13 points. }
+\newline a) Explain briefly why \(A = HQ\) factorization does not always exist for any square matrix \(A\), where \(H\) is positive definite and \(Q\) is orthogonal. (3 pts)
+\newline
+\newline b) Which of the following constraint(s) can we impose on \(A\) so that \(A\) always has an HQ factorization? (2 pts)
+\begin{enumerate}
+    \item A is symmetric
+    \item A is invertible
+    \item A is a Markov matrix
+    \item A is diagonalizable
+    \item A is the matrix such that its LU factorization exists.
+\end{enumerate}
+\newline
+\newline c) Using one of the constraint you have chosen from part (b), prove that \(HQ\) factorization must exist for all matrices with that property. (8 pts)
+\newline \textbf{Hint}: Consider the singular value decomposition of \(A = U\Sigma V^T\). You can prove it by choosing appropriate H and Q in terms of \(U, \Sigma\), and \(V\).
+\newline 
+
+
+\section{(Eigenvalues, eigenvectors, and differential equations), 16 points.}
+\newline We know that square matrix multiplication are not commutative in general. In the first half of this problem, we will explore the conditions that guarantee commutativity of multiplication.
+\newline
+\newline a) Suppose \(v_1\) is a common eigenvector for matrix \(M_1\) and \(M_2\), show that \(v_1 \in N(M_1M_2-M_2M_1)\). (3 pts)
+\newline
+\newline Now suppose \(A\) and \(B\) are both diagonalizable \( 3 \times 3\) matrices.
+\newline
+\newline b) Prove that \(AB = BA\) if \(A\) and \(B\) have the same set of eigenvectors. (4 pts)
+\newline
+\newline Consider the differential equation \((3I+A^2B)\frac{du}{dt} = (2A-AB^2)u(t)  \), where B is an invertible matrix. \(AB = BA.\) We can simplify this whole differential equation to \(\frac{du}{dt} = Ru(t)\)
+\newline
+\newline c) Let \(\lambda_A\) be an eigenvalue of A and \(\lambda_B\) be an eigenvalue of B. Write an eigenvalue of R in terms of \(\lambda_A\) and \(\lambda_B\). (5 pts)
+\newline 
+\newline d) If A is positive semi-definite and \(\abs{\lambda_B} < \sqrt{2}\) for all eigenvalues of B, how will the solutions to this differential equation behave as \(t \rightarrow{\infty} \)? Briefly explain all possibilities. (4 pts)
+\newline
+
+\section{(Vector Spaces and Linear Transformations), 14 points.}
+\newline Consider the set of all \( n \times n\) real-antisymmetric matrices \(C\). These matrices satisfy the condition \(A^T = -A\).
+\newline
+\newline a) (True or False) All antisymmetric matrices are traceless, that is, the trace is always 0. Justify your answer briefly.(2 pts)
+\newline
+\newline b) For the set of all \( 3 \times 3\) antisymmetric matrices, give a basis for these matrices. (2 pts)
+\newline
+\newline c) For each of the following, explain whether it is a \textbf{linear transformation} \(T: C \rightarrow{C} \). (6 pts)
+\begin{enumerate}
+    \item \(T(C) = DCD\), where \(D\) is a diagonal matrix.
+    \item \(T(C) = QCQ^T\), where Q is an orthogonal matrix.
+    \item \(T(C) = PCP^{-1}\), where P is a symmetric negative-definite matrix(i.e. all eigenvalues of P are negative).
+    \item \(T(C) = -C\)
+    \item \(T(C)\) adds 2 to all the off-diagonal entries
+    \item \(T(C) = CS + SC\), where \(S\) is a real-symmetric matrix.
+\newline
+\end{enumerate}
+\newline
+\newline d) Now take \( n = 3 \) and let \(T(C) = DCD\), where \(D = \begin{bmatrix}
+-2 &&\\ &3& \\ &&-1\end{bmatrix} \). Find of matrix of transformation for \(T^2(C)\). (4 pts)
+\newline
+
+\section{(Projection, Least-Squares, Gram-Schmidt), 21 points.}
+\newline You have two \(2 \times 6\) matrix \(G\) and \(S\) such that \(G^{T}S = 0\). Both \(G\) and \(S\) have independent columns. Let's call these columns \(g_1, g_2, s_1, s_2\). Additionally, \(g_1, g_2, s_1, s_2, q_1\) and \(q_2\) spans \(R^6\).
+\newline
+\newline a) Give a basis of the left nullspace of the matrix \( \begin{bmatrix} G & S & q_1 \end{bmatrix} \).(1 pt)
+\newline 
+\newline We perform Gram-Schmidt on \(G\) and \(S\) and produce factorizations \(G = Q_{G}R_{G}\) and \(S = Q_{S}R_{S}\).
+\newline
+\newline b) Write down the \(QR\) factorization for the block matrix \(K = \begin{bmatrix} G & S \end{bmatrix} \). Is R invertible in this case? Carefully justify your reasoning. (5 pts)
+\newline
+\newline c) Write down the projection matrices to the following subspaces. Be sure your answer are only in terms of \(Q\)s and \(R\)s as needed. If it is impossible, please state it(You don't have to justify your reasoning). (4 pts)
+\begin{enumerate}
+    \item \(N(S^T)\)
+    \item \(N(K)\)
+    \item \(C(K)\)
+    \item \(N(G^T)\)
+\end{enumerate}
+\newline
+\newline Now we want to solve for the least-square problem \( K\hat{x} = b\).
+\newline
+\newline d) If there is no solution to the equation \( Kx = b \). Give as much information about vector b. (2 pts)
+\newline
+\newline e) Carefully describe how you would solve for \(\hat{x}\). Explain the matrix manipulation you will apply and all the appropriate algorithms to possibly speed up the process of solving for \(\hat{x}\). (4 pts)
+\newline
+\newline Let \(z_1, z_2, z_3\) and \(z_4\) be an orthonormal basis in \(R^4\). Define matrix \(A = z_1r_2^{T} + z_3q_2^{T}\).
+\newline
+\newline f) What is the rank of \(A\)? (1 pt)
+\newline
+\newline g) Give a basis to all of the four fundamental subspaces of A in terms of the all the column vectors specified in this problem as needed. (4 pts)
+\newline
+\newline
+
+\section{(Solving Ax = b, LU Factorization), 12 points.}
+\newline You are given an LU factorization of a matrix A:
+\newline L = \begin{bmatrix} 
+1 \\
+2 & 1 \\
+-2 & 0 & 1 \\
+1 & -2 & 4 & 1 \\
+\end{bmatrix}
+U = \begin{bmatrix}
+1 & -2 & 3 & -1 \\
+  & 1 & 2 & 1 \\
+  &   & -1 & 3 \\
+  &   &    & 2 \\
+\end{bmatrix}
+\newline
+\newline a) What is the product of singular values of A? (2 pts)
+\newline b) Without computing any inverses or product of matrices, solve
+Ax = b for 
+\newline b = 
+\begin{bmatrix}
+-4 \\ -8 \\ 15 \\ 28
+\end{bmatrix} (5 pts)
+\newline
+\newlien c) Find complete solutions to the equation \(Cx = b\), where \(C = \begin{bmatrix}A & b \end{bmatrix} \) and b = \begin{bmatrix}
+-4 \\ -8 \\ 15 \\ 28
+\end{bmatrix} (5 pts)
+
+\section{(SVD), 4 points.}
+\newline Consider the singular value decomposition of matrix \(A\):
+\newline \(A = \begin{bmatrix} u_1 & u_2 & u_3 \end{bmatrix}\begin{bmatrix}
+7 &&\\ &2& \\ &&0\end{bmatrix}\begin{bmatrix}
+v_1 & v_2 & v_3\end{bmatrix}\)
+\newline Consider a unit sphere in \(R^3\). Now consider the image when A multiplies all vectors \(x\) such that $\| \mathbf{x} \|$=1, describe that new image. Be sure to include the directions and the length of all major/minor axes.
+
+\section{(Eigenvectors and Symmetric Matrices), 3 points.}
+\newline Suppose \(B\) is a symmetric positive semidefinite matrix. Its nullspace is spanned by the vector \begin{bmatrix} 1 \\ -1 \\ 0 \\ 2 \end{bmatrix}
+\newline Circle \textbf{all} vectors that must be eigenvectors of \(B\) and put a box to \textbf{all} vectors that \textbf{cannot be} eigenvectors of \(B\).
+\newline
+\newline \begin{bmatrix} 1 \\ -1 \\ 0 \\ 2 \end{bmatrix}
+\begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix}
+\begin{bmatrix} 3 \\ 0 \\ -2 \\ 1 \end{bmatrix}
+\begin{bmatrix} 0 \\ 2 \\ 0 \\ 1 \end{bmatrix}
+\begin{bmatrix} 3 \\ -1 \\ 0 \\ -2 \end{bmatrix}
+
+\section{(Markov Matrices), 9 points.}
+\newline A Markov matrix \(M\) has a steady-state eigenvector \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix}.
+\newline
+\newline a) If \(M\) is symmetric positive-definite, what is the minimal \(tr(M)\)?(1 pt)
+\newline
+\newline b) Evaluate \(M^{n}x\), where \(x\) is a vector in \(R^4\).(2 pts)
+\newline
+\newline c) Give an eigenvector for \(M^T\). Why does it have to be an eigenvector for \(M^T\) regardless of what M is? (2 pts)
+\newline d) A matrix \(N\) is similar to \(M\). Let \( N = B^{-1}MB \). If \(N\) is Markov and symmetric positive-definite, give an example of \(B\) and state its property. If no such B exist, explain why. (4 pts)
+
+\section{(Determinants and Cofactors), 8 points.}
+\newline a) What is the determinant of the following block matrix, where every block matrix is \( 3 \times 3\)? Express your answer in terms of \(det(R)\).
+\newline \(C = \begin{bmatrix} I & 2R \\ 3I & 0 \end{bmatrix}\), where R is an arbitrary \( 3 \times 3\) matrix. (3 pts)
+\newline 
+\newline b) Your TA has a \( n \times n\) invertible matrix \(A\). He wants you to find \(A^{-1}\). However, he(like me), decides to give you a hard time but giving you the all the \(n^2\) cofactors of \(A\). Explain how you can find \(A^{-1}\). (5 pts)
+
+\newline
+
+\end{document}
